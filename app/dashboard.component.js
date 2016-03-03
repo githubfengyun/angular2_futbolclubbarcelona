@@ -1,4 +1,4 @@
-System.register(['angular2/core', './player.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './player.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,12 +10,15 @@ System.register(['angular2/core', './player.service'], function(exports_1, conte
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, player_service_1;
+    var core_1, router_1, player_service_1;
     var DashboardComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             },
             function (player_service_1_1) {
                 player_service_1 = player_service_1_1;
@@ -23,8 +26,9 @@ System.register(['angular2/core', './player.service'], function(exports_1, conte
         execute: function() {
             DashboardComponent = (function () {
                 //inject PlayerSerive
-                function DashboardComponent(_playerService) {
+                function DashboardComponent(_playerService, _router) {
                     this._playerService = _playerService;
+                    this._router = _router;
                     this.players = [];
                 }
                 DashboardComponent.prototype.ngOnInit = function () {
@@ -33,13 +37,19 @@ System.register(['angular2/core', './player.service'], function(exports_1, conte
                     this._playerService.getPlayers()
                         .then(function (players) { return _this.players = players; });
                 };
+                DashboardComponent.prototype.gotoDetail = function (player) {
+                    //This array has two elements, 
+                    //the name of the destination route and a route parameter object with an id field set to the value of the selected player's id.
+                    var link = ['PlayerDetail', { id: player.id }];
+                    this._router.navigate(link);
+                };
                 DashboardComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-dashboard',
+                        //selector: 'my-dashboard',
                         templateUrl: 'app/dashboard.component.html',
-                        styleUrls: ['app/dashboard.component.css'],
+                        styleUrls: ['app/dashboard.component.css']
                     }), 
-                    __metadata('design:paramtypes', [player_service_1.PlayerService])
+                    __metadata('design:paramtypes', [player_service_1.PlayerService, router_1.Router])
                 ], DashboardComponent);
                 return DashboardComponent;
             }());

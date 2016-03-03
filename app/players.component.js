@@ -1,4 +1,4 @@
-System.register(['angular2/core', './player.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './player.service', './player-detail.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,20 +10,28 @@ System.register(['angular2/core', './player.service'], function(exports_1, conte
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, player_service_1;
+    var core_1, router_1, player_service_1, player_detail_component_1;
     var PlayersComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
             function (player_service_1_1) {
                 player_service_1 = player_service_1_1;
+            },
+            function (player_detail_component_1_1) {
+                player_detail_component_1 = player_detail_component_1_1;
             }],
         execute: function() {
+            //component : Single Responsibility Principle.
             PlayersComponent = (function () {
                 //inject PlayerSerive
-                function PlayersComponent(_playerService) {
+                function PlayersComponent(_router, _playerService) {
+                    this._router = _router;
                     this._playerService = _playerService;
                     this.players = [];
                 }
@@ -33,9 +41,23 @@ System.register(['angular2/core', './player.service'], function(exports_1, conte
                     this._playerService.getPlayers()
                         .then(function (players) { return _this.players = players; });
                 };
+                //when to call getPlayers: 不应该是构造器,我们应该保证construtor的逻辑足够的简单,比如就是初始化必要的属性,而不应该附加多余的行为.
+                //所以我们需要一个特殊的地方来调用这个getPlayers获取数据=>
+                //Angular will call it if we implement the Angular ngOnInit Lifecycle Hook. 
+                //Angular offers a number of interfaces for tapping into critical moments in the component lifecycle: 
+                //at creation, after each change, and at its eventual destruction.
+                PlayersComponent.prototype.getPlayers = function () {
+                    var _this = this;
+                    //to fulfill the async operation, use Promise to get the players data when service call done
+                    this._playerService.getPlayers().then(function (players) { return _this.players = players; });
+                };
+                PlayersComponent.prototype.onSelect = function (player) { this.selectedPlayer = player; };
+                PlayersComponent.prototype.gotoDetail = function () {
+                    this._router.navigate(['HeroDetail', { id: this.selectedPlayer.id }]);
+                };
                 PlayersComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-players',
+                        //selector: 'my-players',
                         //a. `String ${a}` ES6 字符串模板 : 支持分行, 支持替换变量.
                         //b. single data-binding(class->view), 所以当改变视图的name的时候,view上的label的name没有变化
                         //(与angular1默认为双向绑定不一样的地方)
@@ -53,9 +75,10 @@ System.register(['angular2/core', './player.service'], function(exports_1, conte
                         //c.below are 双向绑定,ngModel替换value, 注意这里不能使用{{}} -> 1.当view发生变化的时候,同步class对应的属性 2. 当class属性变化时候,自动同步到view
                         //d. #player # means local template varaible
                         templateUrl: 'app/players.component.html',
-                        styleUrls: ['app/players.component.css']
+                        styleUrls: ['app/players.component.css'],
+                        directives: [player_detail_component_1.PlayerDetailComponent]
                     }), 
-                    __metadata('design:paramtypes', [player_service_1.PlayerService])
+                    __metadata('design:paramtypes', [router_1.Router, player_service_1.PlayerService])
                 ], PlayersComponent);
                 return PlayersComponent;
             }());

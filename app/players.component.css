@@ -4,6 +4,7 @@
 }
 
 .players {
+    float: left;
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
@@ -53,3 +54,26 @@
     margin-right: .8em;
     border-radius: 4px 0px 0px 4px;
 }
+
+.ground{
+    float:right;
+    margin-right: 100px;
+    max-width:800px;
+    height:500px;  
+    overflow: hidden;
+}
+
+.playerDetail{
+    float:left;
+    margin-left: 200px;
+    margin-top: -85px;
+}
+
+/*
+    margin-top: -85px;
+    margin-left: 150px;
+    max-width:1200px;
+    width: 1200px;
+    height:500px;  
+    overflow: hidden;
+*/

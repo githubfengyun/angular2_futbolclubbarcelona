@@ -1,0 +1,18 @@
+<div *ngIf="player" class="col6">
+    <h2>{{player.name}} details!</h2>
+
+    <div class="mainPlayer">
+    	<img src={{player.pic[0]}} alt={{player.name}}>
+    </div>	
+    <div class="detail">
+        <label>Name: {{player.name}}</label> 
+        <label>ChineseName: {{player.chineseName}}</label> 
+        <label>Number: {{player.id}}</label>
+        <label>BirthDay: {{player.birthday}}</label>
+        <label>Height: {{player.height}}</label>
+        <label>Weight: {{player.weight}}</label>
+        <input [(ngModel)]="player.weight" placeholder="Weight">
+        <button (click)="goBack()">Back</button>
+    </div>
+
+</div>

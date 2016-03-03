@@ -3,6 +3,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
 
 import { DashboardComponent } from './dashboard.component';
 import { PlayersComponent } from './players.component';
+import { PlayerDetailComponent } from './player-detail.component';
 import { Player } from './player'
 import { PlayerService } from './player.service'
 
@@ -20,6 +21,11 @@ import { PlayerService } from './player.service'
 		path: '/players',
 		name: 'Players',
 		component: PlayersComponent
+	},
+	{
+		path: '/detail/:id',
+		name: 'PlayerDetail',
+		component: PlayerDetailComponent
 	}
 ])
 @Component({
@@ -30,7 +36,7 @@ import { PlayerService } from './player.service'
 		<a [routerLink]="['Players']">Players</a>
 		<router-outlet></router-outlet>
 	`,
-	styleUrls:['app/app.component.css']
+	styleUrls:['app/app.component.css'],
 	directives:[ROUTER_DIRECTIVES],
 	//root component(AppComponent) porvide the service providers, so child component no need to provide it again.
 	providers:[PlayerService, ROUTER_PROVIDERS]

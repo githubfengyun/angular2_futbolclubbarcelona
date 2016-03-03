@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './dashboard.component', './players.component', './player.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './dashboard.component', './players.component', './player-detail.component', './player.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './dashboard.component', '.
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, dashboard_component_1, players_component_1, player_service_1;
+    var core_1, router_1, dashboard_component_1, players_component_1, player_detail_component_1, player_service_1;
     var AppComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['angular2/core', 'angular2/router', './dashboard.component', '.
             },
             function (players_component_1_1) {
                 players_component_1 = players_component_1_1;
+            },
+            function (player_detail_component_1_1) {
+                player_detail_component_1 = player_detail_component_1_1;
             },
             function (player_service_1_1) {
                 player_service_1 = player_service_1_1;
@@ -49,6 +52,11 @@ System.register(['angular2/core', 'angular2/router', './dashboard.component', '.
                             path: '/players',
                             name: 'Players',
                             component: players_component_1.PlayersComponent
+                        },
+                        {
+                            path: '/detail/:id',
+                            name: 'PlayerDetail',
+                            component: player_detail_component_1.PlayerDetailComponent
                         }
                     ]),
                     core_1.Component({

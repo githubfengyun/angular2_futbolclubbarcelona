@@ -1,0 +1,39 @@
+label {
+  display: block;
+  margin: .5em 0;
+  color: grey;
+  font-weight: bold;
+}
+.mainPlayer img{
+  float: left;
+  width:680px;
+  height:480px;
+} 
+.detail{
+  float: left;
+  margin-left: 20px;
+  font-size: 20px;
+}
+input {
+  height: 2em;
+  font-size: 1em;
+  padding-left: .4em;
+}
+button {
+  margin-top: 30px;
+  display: block;
+  font-family: Arial;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer; cursor: hand;
+}
+button:hover {
+  background-color: #cfd8dc;
+}
+button:disabled {
+  background-color: #eee;
+  color: #ccc; 
+  cursor: auto;
+}

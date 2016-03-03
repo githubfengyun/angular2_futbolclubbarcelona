@@ -1,6 +1,18 @@
 <h2>Players List</h2>
 <ul class="players">
-	<li *ngFor="#player of players">
+	<li *ngFor="#player of players" [class.selected]="player===selectedPlayer" (click)="onSelect(player)">
 		<span class="badge">{{player.id}}</span>{{player.name}}
 	</li>
 </ul>
+<div class="ground" *ngIf!="selectedPlayer">
+	<img src="public/img/nuokanpu.jpg">
+</div>
+<div *ngIf="selectedPlayer">
+	<!-- using properites bingding to transfer data between components
+	###### 1. using [player] to pass the data
+	###### 2. define the inputs: ['player'] in the @Component 
+	-->
+	<div class="playerDetail">
+    	<my-player-detail [player]='selectedPlayer'></my-player-detail>
+    </div>
+</div>
