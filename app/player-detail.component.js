@@ -34,8 +34,14 @@ System.register(['angular2/core', 'angular2/router', './player.service'], functi
                     //The player id is a number. Route parameters are always strings.
                     //So we convert the route parameter value to a number with the JavaScript (+) operator.
                     var id = +this._routeParams.get('id');
+                    if (id) {
+                        this._playerService.getPlayer(id)
+                            .then(function (player) { return _this.player = player; });
+                    }
+                    /*
                     this._playerService.getPlayer(id)
-                        .then(function (player) { return _this.player = player; });
+                        .then(player => this.player = player);
+                    */
                 };
                 PlayerDetailComponent.prototype.goBack = function () {
                     window.history.back();

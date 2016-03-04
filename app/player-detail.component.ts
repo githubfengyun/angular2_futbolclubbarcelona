@@ -16,6 +16,7 @@ import { PlayerService } from './player.service';
 })
 export class PlayerDetailComponent{
 	player: Player;
+	
 
 	constructor(
 		private _playerService:PlayerService,
@@ -25,8 +26,15 @@ export class PlayerDetailComponent{
 		//The player id is a number. Route parameters are always strings.
 		//So we convert the route parameter value to a number with the JavaScript (+) operator.
 		let id = +this._routeParams.get('id');
+		
+		if (id) {
+			this._playerService.getPlayer(id)
+				.then(player => this.player = player);
+		}
+		/*
 		this._playerService.getPlayer(id)
 			.then(player => this.player = player);
+		*/
 	}
 
 	goBack(){
