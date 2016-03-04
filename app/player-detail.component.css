@@ -10,7 +10,7 @@ label {
   height:480px;
 } 
 #carousel-example-generic{
-  max-width: 100%;
+  max-width: 90%;
 }
 .detail{
   float: left;
