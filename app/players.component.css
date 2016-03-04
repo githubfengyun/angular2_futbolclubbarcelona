@@ -50,7 +50,7 @@
     left: -1px;
     top: -4px;
     height: 1.8em;
-    width:1.5em;
+    width:2em;
     margin-right: .8em;
     border-radius: 4px 0px 0px 4px;
 }
@@ -64,16 +64,7 @@
 }
 
 .playerDetail{
-    float:left;
-    margin-left: 200px;
-    margin-top: -85px;
+    float:right;
+    margin-top: -60px;
 }
 
-/*
-    margin-top: -85px;
-    margin-left: 150px;
-    max-width:1200px;
-    width: 1200px;
-    height:500px;  
-    overflow: hidden;
-*/

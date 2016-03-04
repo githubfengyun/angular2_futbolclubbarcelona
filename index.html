@@ -2,7 +2,10 @@
 <head>
     <base href="/">
     <title>Angular 2 QuickStart</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+
+     <!-- Bootstrap -->
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> 
     <link rel="stylesheet" href="styles.css">
 
     <!-- 1. Load libraries -->
@@ -26,6 +29,7 @@
           }
         }
       });
+      // import the main.js
       System.import('app/main')
             .then(null, console.error.bind(console));
     </script>
@@ -35,6 +39,11 @@
   <!-- 3. Display the application -->
   <body>
     <my-app>Loading...</my-app>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   </body>
 
 </html>

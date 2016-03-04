@@ -6,13 +6,16 @@ label {
 }
 .mainPlayer img{
   float: left;
-  width:680px;
+  width: 950px;
   height:480px;
 } 
+#carousel-example-generic{
+  max-width: 100%;
+}
 .detail{
   float: left;
   margin-left: 20px;
-  font-size: 20px;
+  font-size: 16px;
 }
 input {
   height: 2em;
