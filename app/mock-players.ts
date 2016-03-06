@@ -1,7 +1,7 @@
-import {Palyer} from './player';
+import {Player} from './player';
 
 //Typescript array: 1.var a:string[] 2. var a:Array<string>
-export var PLAYERS: Palyer[] = [
+export var PLAYERS: Player[] = [
 	{ "id": 10, "name": "Lionel Messi", "chineseName":"梅西", "height":"169cm", "weight":"67kg" , 
 		"birthday":"1987 06-24", 
 		"pic": ["public\\img\\meixi1.jpg", "public\\img\\meixi2.jpg", "public\\img\\meixi3.jpg"]

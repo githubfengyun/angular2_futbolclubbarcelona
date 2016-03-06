@@ -1,5 +1,5 @@
 import { Component } from 'angular2/core';
-import { Router } from 'angular2/router';
+//import { Router } from 'angular2/router';
 
 import { Player } from './player';
 import { PlayerService } from './player.service';
@@ -38,7 +38,7 @@ export class PlayersComponent{
 
 	//inject PlayerSerive
 	constructor(
-		private _router:Router,
+		//private _router:Router,
 		private _playerService:PlayerService
 		){}
 
@@ -60,7 +60,4 @@ export class PlayersComponent{
 
 	onSelect(player: Player) { this.selectedPlayer = player }
 
-	gotoDetail() {
-		this._router.navigate(['HeroDetail', { id: this.selectedPlayer.id }])
-	}
 }

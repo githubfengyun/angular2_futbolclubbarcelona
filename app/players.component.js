@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './player.service', './player-detail.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './player.service', './player-detail.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,12 @@ System.register(['angular2/core', 'angular2/router', './player.service', './play
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, player_service_1, player_detail_component_1;
+    var core_1, player_service_1, player_detail_component_1;
     var PlayersComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (router_1_1) {
-                router_1 = router_1_1;
             },
             function (player_service_1_1) {
                 player_service_1 = player_service_1_1;
@@ -30,8 +27,9 @@ System.register(['angular2/core', 'angular2/router', './player.service', './play
             //component : Single Responsibility Principle.
             PlayersComponent = (function () {
                 //inject PlayerSerive
-                function PlayersComponent(_router, _playerService) {
-                    this._router = _router;
+                function PlayersComponent(
+                    //private _router:Router,
+                    _playerService) {
                     this._playerService = _playerService;
                     this.players = [];
                 }
@@ -52,9 +50,6 @@ System.register(['angular2/core', 'angular2/router', './player.service', './play
                     this._playerService.getPlayers().then(function (players) { return _this.players = players; });
                 };
                 PlayersComponent.prototype.onSelect = function (player) { this.selectedPlayer = player; };
-                PlayersComponent.prototype.gotoDetail = function () {
-                    this._router.navigate(['HeroDetail', { id: this.selectedPlayer.id }]);
-                };
                 PlayersComponent = __decorate([
                     core_1.Component({
                         //selector: 'my-players',
@@ -78,7 +73,7 @@ System.register(['angular2/core', 'angular2/router', './player.service', './play
                         styleUrls: ['app/players.component.css'],
                         directives: [player_detail_component_1.PlayerDetailComponent]
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, player_service_1.PlayerService])
+                    __metadata('design:paramtypes', [player_service_1.PlayerService])
                 ], PlayersComponent);
                 return PlayersComponent;
             }());
